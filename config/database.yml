@@ -72,23 +72,6 @@ test:
 # the values provided in this file. Alternatively, you can specify a connection
 # URL environment variable explicitly:
 #
-#   production:
-#     url: <%= ENV["MY_APP_DATABASE_URL"] %>
-#
-# Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
-# for a full overview on how database connection configuration can be specified.
-#
 production:
-  primary: &primary_production
-    <<: *default
-    database: habit_hustle_production
-    username: habit_hustle
-    password: <%= ENV["HABIT_HUSTLE_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: habit_hustle_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: habit_hustle_production_queue
-    migrations_paths: db/queue_migrate
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
